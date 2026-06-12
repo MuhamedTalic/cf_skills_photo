@@ -1,68 +1,96 @@
 # Promo Image Generator
 
-Generates branded promotional images for social media and OLX listings.
-Output is a single HTML file that renders at 1080×1080px, exported as PNG via browser screenshot.
+Generates branded promotional images for social media (Facebook, Instagram) and OLX listings.
+Output is a 1080×1080px PNG exported via Puppeteer — no manual screenshots needed.
 
-## Template Layout
+## Brands
 
-```
-┌─────────────────────────────────┐
-│         [Brand Logo]            │  ← top: logo centered
-├─────────────────────────────────┤
-│                                 │
-│        [Product Image]          │  ← center: product (bg removed)
-│                                 │
-├──────────────┬──────────────────┤
-│  Cijena:     │   Naša cijena:   │  ← prices: market left, ours right
-│  ~~49.99 KM~~│   34.99 KM       │
-├─────────────────────────────────┤
-│       www.brand.ba              │  ← footer: website
-└─────────────────────────────────┘
-```
-
-## Supported Brands
-
-| Brand | Background | Logo |
+| Brand | Background | Templates |
 |---|---|---|
-| Proton Suplementi | Soft pink `#F2C8CB` | Image top-center |
-| MixBox | Orange gradient `#D4500A → #8B2E00` | Text-based top-left |
+| **MixBox** | Orange gradient `#D4500A → #8B2E00` | `assets/templates/mixbox-a/b/c.html` |
+| **Proton Suplementi** | Soft pink `#F2C8CB` | `assets/templates/proton-template/b/c.html` |
+
+## Template Formats
+
+| Format | Canvas | Use |
+|---|---|---|
+| A — Image + Text | 1080×1080 | Standard promo post: product collage + headline + contact footer |
+| B — Image Only | 1080×1080 | Clean product grid with logo watermark |
+| C — Text Only | 1080×1080 | Announcement or offer with no product image |
+| Story | 1080×1920 | Instagram / Facebook Stories |
 
 ## Workflow
 
-### 1. Product has a clean background
-Drop the image directly into the template.
-
-### 2. Product has a messy background
-Run `/background-removal` first to get a transparent PNG, then place it on the template.
-
-### 3. Generate the image
-Use `/image` to describe what you want, or edit `post.html` directly with the product and prices.
-
-### 4. Export
-Open `post.html` in browser → right-click → screenshot, or:
-```bash
-node render.mjs assets/templates/post.html output/post.png
+```
+1. Product image provided
+       ↓
+2. Background not clean?
+   → /background-removal → transparent PNG
+       ↓
+3. Need a lifestyle background scene?
+   → node generate-bg.mjs --brand mixbox
+       ↓
+4. Copy template → post.html, edit headline + image paths
+       ↓
+5. node render.mjs post.html output/post.png
 ```
 
-## Installed Skills
+## AI Background Generation
 
-- `/background-removal` — remove product backgrounds via inference.sh BiRefNet
-- `/image` — AI image generation and editing (Gemini, Flux, Ideogram)
-- `/hyperframes` — HTML composition editor
+Generates a background scene via FLUX.1-schnell (HuggingFace, free).
 
-## Quick Start (Proton Suplementi)
+**Setup (once):**
+1. Sign up at [huggingface.co](https://huggingface.co)
+2. Go to Settings → Access Tokens → New token → enable **Make calls to Inference Providers**
+3. `$env:HF_TOKEN = "hf_..."`
 
-1. Provide a product image
-2. If background is not clean: `/background-removal` on the image
-3. Tell Claude: product name, market price, your price
-4. Claude generates `post.html` using the Proton template
-5. Open in browser, screenshot at 1080×1080, done
+**Usage:**
+```bash
+# Brand presets
+node generate-bg.mjs --brand mixbox           # autumn street, warm orange tones
+node generate-bg.mjs --brand mixbox-studio    # dark studio, dramatic lighting
+node generate-bg.mjs --brand mixbox-outdoor   # mountain trail, golden hour
+node generate-bg.mjs --brand proton           # clean white gym, soft light
+node generate-bg.mjs --brand proton-dark      # dark bg, electric blue accent
+
+# Custom prompt
+node generate-bg.mjs "industrial warehouse, warm accent light"
+
+# Custom output path
+node generate-bg.mjs --brand mixbox --out assets/images/bg-street.jpg
+
+# Via npm
+npm run generate -- --brand mixbox
+```
+
+Output saved to `assets/images/bg-generated.jpg`. In `post.html` set grid class to `grid-1` and point the `<img>` src at the file.
+
+## Export
+
+```bash
+node render.mjs post.html output/post.png
+
+# Via npm
+npm run render -- post.html output/post.png
+```
+
+## Skills
+
+| Skill | When to use |
+|---|---|
+| `/hyperframes` | Edit HTML templates and animated compositions |
+| `/image` | AI image generation and editing guidance |
+| `/background-removal` | Strip product image backgrounds → transparent PNG |
 
 ## File Reference
 
 | File | Purpose |
 |---|---|
-| `index.html` | MixBox brand composition (reference) |
-| `SKILL-social-image.md` | Full HTML template spec |
-| `.agents/skills/hyperframes/` | Design system (palettes, typography, patterns) |
-| `assets/images/` | Placeholder product images |
+| `post.html` | Working file — copy a template here and edit |
+| `render.mjs` | Puppeteer renderer (1080×1080 PNG output) |
+| `generate-bg.mjs` | AI background generator (FLUX via HuggingFace) |
+| `index.html` | MixBox animated video composition (HyperFrames reference) |
+| `assets/templates/` | Brand HTML templates |
+| `assets/images/` | Product images + AI-generated backgrounds |
+| `SKILL-social-image.md` | MixBox template spec |
+| `SKILL-proton-image.md` | Proton Suplementi template spec |

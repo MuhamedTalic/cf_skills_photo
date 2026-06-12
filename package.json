@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "npx serve . --listen 3000",
-    "render": "node render.mjs"
+    "render": "node render.mjs",
+    "generate": "node generate-bg.mjs"
   },
   "devDependencies": {
     "jimp": "^1.6.1",
