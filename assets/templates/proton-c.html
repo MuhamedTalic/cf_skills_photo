@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+
+  .post {
+    width: 1080px;
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(ellipse at 50% 38%, #f5d0d5 0%, #dba0ac 55%, #c98090 100%);
+  }
+
+  /* Header */
+  .header {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 24px;
+  }
+
+  /* LOGO: place proton-logo.png in assets/ then update src */
+  .header img { height: 100px; object-fit: contain; }
+
+  /* Body — text only */
+  .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 80px;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .headline {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 96px;
+    font-weight: 900;
+    color: rgba(40, 10, 20, 0.85);
+    line-height: 0.9;
+    letter-spacing: -2px;
+    text-shadow: 2px 2px 0 rgba(255,255,255,0.3);
+  }
+
+  .divider {
+    width: 100px;
+    height: 4px;
+    background: rgba(40, 10, 20, 0.25);
+    border-radius: 2px;
+    margin: 6px auto;
+  }
+
+  .subline {
+    font-size: 36px;
+    font-weight: 700;
+    color: rgba(40, 10, 20, 0.7);
+  }
+
+  .tagline {
+    font-size: 26px;
+    font-weight: 400;
+    color: rgba(40, 10, 20, 0.6);
+    line-height: 1.4;
+  }
+
+  .tagline strong {
+    color: #1e5c1e;
+    font-weight: 700;
+  }
+
+  /* Footer */
+  .footer {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 18px;
+  }
+
+  .footer-url {
+    font-size: 24px;
+    font-weight: 700;
+    color: rgba(35, 15, 25, 0.6);
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+<div class="post">
+
+  <div class="header">
+    <img src="../proton-logo.png" alt="Proton Suplementi">
+  </div>
+
+  <!-- BODY — edit all text here -->
+  <div class="body">
+    <div class="headline">Novo u ponudi!</div>
+    <div class="divider"></div>
+    <div class="subline">Kvalitet koji možeš osjetiti</div>
+    <div class="tagline">
+      Vrhunski suplementi za<br>
+      <strong>vrhunske rezultate</strong>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-url">www.protonsuplementi.ba</div>
+  </div>
+
+</div>
+</body>
+</html>

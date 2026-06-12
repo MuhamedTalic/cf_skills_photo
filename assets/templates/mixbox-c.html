@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: 'Arial Black', Impact, sans-serif;
+  }
+
+  .post {
+    width: 1080px;
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(155deg, #D4500A 0%, #8B2E00 100%);
+  }
+
+  /* Header */
+  .header {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+  }
+
+  /* LOGO: place mixbox-logo.png in assets/ then update src */
+  .header img { height: 90px; object-fit: contain; }
+
+  /* Body — text only */
+  .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 70px;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .headline {
+    font-size: 108px;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 0.88;
+    text-shadow: 4px 4px 0 rgba(0,0,0,0.4);
+    letter-spacing: -3px;
+  }
+
+  .subline {
+    font-size: 44px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.88);
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  }
+
+  .tagline {
+    font-size: 30px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    font-family: Arial, sans-serif;
+    margin-top: 8px;
+  }
+
+  .tagline strong { color: #E63329; font-weight: 700; }
+
+  /* Decorative divider */
+  .divider {
+    width: 120px;
+    height: 4px;
+    background: rgba(255,255,255,0.35);
+    border-radius: 2px;
+    margin: 4px auto;
+  }
+
+  /* Footer */
+  .footer {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 48px 30px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+
+  .contact-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .icon-phone { background: #E63329; }
+  .icon-web   { background: rgba(255,255,255,0.2); }
+  .icon-olx   { background: #ffffff; color: #222; font-size: 13px; font-weight: 900; }
+
+  .contact-text { font-size: 20px; font-weight: 700; line-height: 1.2; }
+  .contact-text small { display: block; font-size: 13px; font-weight: 400; opacity: 0.7; }
+
+  .footer-divider { width: 1px; height: 60px; background: rgba(255,255,255,0.2); }
+</style>
+</head>
+<body>
+<div class="post">
+
+  <div class="header">
+    <img src="../mixbox-logo.png" alt="MixBox">
+  </div>
+
+  <!-- BODY — edit all text here -->
+  <div class="body">
+    <div class="headline">XXL moda</div>
+    <div class="divider"></div>
+    <div class="subline">(Od 3XL do 10XL)</div>
+    <div class="tagline">Sve što želiš, na <strong>jednom mjestu</strong></div>
+  </div>
+
+  <div class="footer">
+    <div class="contact-item">
+      <div class="contact-icon icon-phone">📞</div>
+      <div class="contact-text"><small>Telefon</small>+387 62 631 517</div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="contact-item">
+      <div class="contact-icon icon-web">🌐</div>
+      <div class="contact-text"><small>Web</small>mixbox.ba</div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="contact-item">
+      <div class="contact-icon icon-olx">OLX</div>
+      <div class="contact-text"><small>OLX</small>mixbox.olx.ba</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
