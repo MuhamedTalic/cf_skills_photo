@@ -23,6 +23,7 @@
   /* Logo watermark — top center */
   .header {
     height: 130px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,9 +43,9 @@
     padding: 10px 40px 10px;
   }
 
-  .image-grid.grid-1 { grid-template-columns: 1fr; }
-  .image-grid.grid-2 { grid-template-columns: 1fr 1fr; }
-  .image-grid.grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .image-grid.grid-1 { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+  .image-grid.grid-2 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
+  .image-grid.grid-3 { grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr; }
   .image-grid.grid-4 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
   .image-grid.grid-6 { grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; }
 
@@ -58,6 +59,7 @@
   /* Footer */
   .footer {
     height: 64px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;

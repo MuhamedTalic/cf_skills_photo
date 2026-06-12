@@ -5,3 +5,4 @@ output/
 !assets/images/*.jpg
 !assets/images/*.png
 !assets/proton-logo.png
+!assets/mixbox-logo.png

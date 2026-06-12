@@ -71,8 +71,8 @@ Open this file and replace:
 ## Export
 
 ```bash
-# Puppeteer
-npx puppeteer-screenshot --url post.html --output post.png --width 1080 --height 1080
+# Render to PNG (auto-detects Chrome, falls back to bundled browser)
+node render.mjs assets/templates/post.html output/post.png
 
 # Or: open post.html in browser → right-click → screenshot
 ```

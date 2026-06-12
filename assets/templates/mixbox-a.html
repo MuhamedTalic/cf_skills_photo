@@ -28,9 +28,9 @@
     inset: 0;
   }
 
-  .bg-collage.grid-1 { display: grid; grid-template-columns: 1fr; }
-  .bg-collage.grid-2 { display: grid; grid-template-columns: 1fr 1fr; }
-  .bg-collage.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+  .bg-collage.grid-1 { display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr; }
+  .bg-collage.grid-2 { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
+  .bg-collage.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr; }
   .bg-collage.grid-4 { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
   .bg-collage.grid-6 { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; }
 
@@ -58,6 +58,7 @@
   /* Header */
   .header {
     padding: 38px 48px 0;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
   }
@@ -105,6 +106,7 @@
   /* Footer */
   .footer {
     padding: 20px 40px 38px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -137,7 +139,7 @@
   }
 
   .icon-phone { background: #E63329; }
-  .icon-web   { background: #2a5f2a; }
+  .icon-web   { background: rgba(255,255,255,0.2); }
   .icon-olx   { background: #ffffff; color: #222; font-size: 13px; letter-spacing: -0.5px; font-weight: 900; }
 
   .pill-text { font-size: 19px; font-weight: 700; line-height: 1.15; }

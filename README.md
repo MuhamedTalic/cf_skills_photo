@@ -41,7 +41,7 @@ Use `/image` to describe what you want, or edit `post.html` directly with the pr
 ### 4. Export
 Open `post.html` in browser → right-click → screenshot, or:
 ```bash
-npx puppeteer-screenshot --url post.html --output post.png --width 1080 --height 1080
+node render.mjs assets/templates/post.html output/post.png
 ```
 
 ## Installed Skills
