@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .post {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* Proton pink background — soft radial vignette matching brand images */
+    background: radial-gradient(ellipse at 50% 38%, #f5d0d5 0%, #dba0ac 55%, #c98090 100%);
+  }
+
+  /* ── LOGO ── */
+  .header {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding-top: 24px;
+  }
+
+  .header img {
+    height: 100px;
+    object-fit: contain;
+  }
+
+  /* ── PRODUCT ── */
+  .product {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 100px;
+    overflow: hidden;
+  }
+
+  .product img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 24px 48px rgba(120, 40, 60, 0.18));
+  }
+
+  /* ── PRICES ── */
+  .prices {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0 80px;
+    gap: 0;
+  }
+
+  .price-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 18px 28px;
+    border-radius: 20px;
+  }
+
+  .price-label {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(60, 20, 35, 0.6);
+  }
+
+  /* Market price — left, strikethrough */
+  .price-box.market .price-amount {
+    font-size: 40px;
+    font-weight: 700;
+    color: rgba(60, 20, 35, 0.45);
+    text-decoration: line-through;
+    text-decoration-color: rgba(180, 40, 60, 0.6);
+    text-decoration-thickness: 3px;
+  }
+
+  /* Our price — right, highlighted */
+  .price-box.ours {
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(4px);
+  }
+
+  .price-box.ours .price-label {
+    color: rgba(30, 80, 30, 0.9);
+  }
+
+  .price-box.ours .price-amount {
+    font-size: 54px;
+    font-weight: 900;
+    color: #1e5c1e;
+  }
+
+  .price-divider {
+    width: 2px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.45);
+    flex-shrink: 0;
+    margin: 0 20px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding-bottom: 14px;
+  }
+
+  .footer-url {
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(35, 15, 25, 0.65);
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+<div class="post">
+
+  <!-- LOGO — replace src with path to proton-logo.png -->
+  <div class="header">
+    <img src="../proton-logo.png" alt="Proton Suplementi">
+  </div>
+
+  <!-- PRODUCT IMAGE — replace src with product path or transparent PNG -->
+  <div class="product">
+    <img src="PRODUCT_IMAGE.jpg" alt="Product">
+  </div>
+
+  <!-- PRICES — edit the two amounts below -->
+  <div class="prices">
+
+    <div class="price-box market">
+      <div class="price-label">Tržišna cijena</div>
+      <div class="price-amount">59.99 KM</div>
+    </div>
+
+    <div class="price-divider"></div>
+
+    <div class="price-box ours">
+      <div class="price-label">Naša cijena</div>
+      <div class="price-amount">39.99 KM</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-url">www.protonsuplementi.ba</div>
+  </div>
+
+</div>
+</body>
+</html>

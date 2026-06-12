@@ -1,0 +1,13 @@
+{
+  "name": "mixbox-promo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve . --listen 3000",
+    "render": "node render.mjs"
+  },
+  "devDependencies": {
+    "jimp": "^1.6.1",
+    "puppeteer": "^25.1.0"
+  }
+}
