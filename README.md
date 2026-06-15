@@ -25,17 +25,26 @@ Output is a 1080×1080px PNG exported via Puppeteer — no manual screenshots ne
 1. Product image provided
        ↓
 2. Background not clean?
-   → /background-removal → transparent PNG
+   → node remove-bg.mjs assets/images/product.jpg assets/images/product-nobg.png
        ↓
-3. Need a lifestyle background scene?
-   → node generate-bg.mjs --brand mixbox
+3. Copy template → post.html, edit headline + image paths
        ↓
-4. Copy template → post.html, edit headline + image paths
-       ↓
-5. node render.mjs post.html output/post.png
+4. node render.mjs post.html output/post.png
 ```
 
-## AI Background Generation
+All templates include built-in brand gradients — no external images or API token needed.
+
+## Background Removal (local, free)
+
+Runs entirely offline via ONNX — no API key, no credits.
+
+```bash
+node remove-bg.mjs assets/images/product.jpg assets/images/product-nobg.png
+```
+
+Output is a transparent PNG ready to drop into any template.
+
+## AI Background Generation (optional)
 
 Generates a background scene via FLUX.1-schnell (HuggingFace, free).
 
@@ -80,7 +89,7 @@ npm run render -- post.html output/post.png
 |---|---|
 | `/hyperframes` | Edit HTML templates and animated compositions |
 | `/image` | AI image generation and editing guidance |
-| `/background-removal` | Strip product image backgrounds → transparent PNG |
+| `/background-removal` | Belt-based bg removal (requires inference.sh credits — use `remove-bg.mjs` for free local alternative) |
 
 ## File Reference
 
@@ -88,9 +97,11 @@ npm run render -- post.html output/post.png
 |---|---|
 | `post.html` | Working file — copy a template here and edit |
 | `render.mjs` | Puppeteer renderer (1080×1080 PNG output) |
-| `generate-bg.mjs` | AI background generator (FLUX via HuggingFace) |
+| `remove-bg.mjs` | Local background removal (ONNX, no API needed) |
+| `generate-bg.mjs` | AI background generator, optional (FLUX via HuggingFace) |
 | `index.html` | MixBox animated video composition (HyperFrames reference) |
 | `assets/templates/` | Brand HTML templates |
 | `assets/images/` | Product images + AI-generated backgrounds |
+| `assets/logos/` | Brand logos (mixbox_logo.png, proton_logo.png) |
 | `SKILL-social-image.md` | MixBox template spec |
 | `SKILL-proton-image.md` | Proton Suplementi template spec |

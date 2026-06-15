@@ -11,7 +11,7 @@ Output renders at exact social media dimensions (1080×1080px) and is exported a
 |---|---|---|
 | **hyperframes** | `/hyperframes` | Creating or editing HTML compositions and static layouts |
 | **image** | `/image` | AI image generation, background changes, style edits via Gemini/Flux/Ideogram |
-| **background-removal** | `/background-removal` | Strip product backgrounds → transparent PNG before placing on template |
+| **background-removal** | `node remove-bg.mjs <in> <out>` | Strip product backgrounds → transparent PNG (local, free, no API). The `/background-removal` skill uses belt which requires inference.sh credits. |
 
 ## Brand Templates
 
@@ -25,20 +25,18 @@ Output renders at exact social media dimensions (1080×1080px) and is exported a
 ```
 1. Product image provided
        ↓
-2. Background not clean? → /background-removal → transparent PNG
+2. Background not clean? → node remove-bg.mjs assets/images/product.jpg assets/images/product-nobg.png
        ↓
-3. Need a background scene? → node generate-bg.mjs --brand <name> (see below)
+3. Copy template (e.g. mixbox-a.html) → post.html, edit headline/images
        ↓
-4. Copy template (e.g. mixbox-a.html) → post.html, edit headline/images
-       ↓
-5. Export: node render.mjs post.html output/post.png
+4. Export: node render.mjs post.html output/post.png
 ```
 
-## AI Background Generation
+All templates include built-in brand gradients — **no external images or API token needed** to produce a finished post.
 
-Use `generate-bg.mjs` to generate a background scene with AI instead of using product photos as the collage.
+## AI Background Generation (optional)
 
-Requires `HF_TOKEN` — free at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) (sign up, New token, Read role). Uses FLUX.1-schnell.
+Use `generate-bg.mjs` only when you want a varied photographic background scene instead of the default brand gradient. Requires `HF_TOKEN` — free at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) (sign up, New token, Read role). Uses FLUX.1-schnell.
 
 ```bash
 # Built-in brand presets (recommended starting point)
@@ -79,12 +77,14 @@ npm run render -- post.html output/post.png
 
 - `post.html` — working file (copy of a template, edited per post)
 - `render.mjs` — Puppeteer renderer: `node render.mjs post.html output/post.png`
-- `generate-bg.mjs` — AI background generator (FLUX.1-schnell via HuggingFace)
+- `remove-bg.mjs` — local background removal (ONNX, free): `node remove-bg.mjs <in.jpg> <out.png>`
+- `generate-bg.mjs` — AI background generator, optional (FLUX.1-schnell via HuggingFace)
 - `index.html` — MixBox animated video composition reference (HyperFrames)
 - `SKILL-social-image.md` — MixBox template spec and format variants
 - `SKILL-proton-image.md` — Proton Suplementi template spec
 - `assets/templates/` — brand HTML templates (mixbox-a/b/c, proton-*)
 - `assets/images/` — product images and AI-generated backgrounds
+- `assets/logos/` — brand logos (mixbox_logo.png, proton_logo.png)
 - `.agents/skills/hyperframes/` — design system: palettes, typography, house-style
 
 ## Template Formats
@@ -100,6 +100,6 @@ npm run render -- post.html output/post.png
 
 1. Always confirm brand before generating: colors, logo, fonts differ per brand
 2. Price display: left = market price (strikethrough), right = our price (highlighted)
-3. Background: soft pink `#F2C8CB` for Proton Suplementi; orange gradient for MixBox
+3. Background: soft pink radial gradient for Proton; orange `linear-gradient(155deg, #D4500A 0%, #8B2E00 100%)` for MixBox — both baked into templates, no external images needed
 4. Export at exactly 1080×1080 — never scale up after export
-5. Product images without clean cutouts must go through `/background-removal` first
+5. Product images without clean cutouts: run `node remove-bg.mjs <input> <output-nobg.png>` first

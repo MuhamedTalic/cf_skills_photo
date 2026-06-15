@@ -17,34 +17,7 @@
     height: 1080px;
     position: relative;
     overflow: hidden;
-    background: #8B2E00;
-  }
-
-  /* ── BACKGROUND COLLAGE ──
-     Supports 1–6 images. Change grid class: grid-1 / grid-2 / grid-3 / grid-4 / grid-6
-     Remove unused <img> tags for fewer images. */
-  .bg-collage {
-    position: absolute;
-    inset: 0;
-  }
-
-  .bg-collage.grid-1 { display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr; }
-  .bg-collage.grid-2 { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
-  .bg-collage.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr; }
-  .bg-collage.grid-4 { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
-  .bg-collage.grid-6 { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; }
-
-  .bg-collage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  /* Orange overlay */
-  .overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(155deg, rgba(190, 65, 5, 0.78) 0%, rgba(90, 18, 0, 0.88) 100%);
+    background: linear-gradient(155deg, #D4500A 0%, #8B2E00 100%);
   }
 
   /* ── CONTENT ── */
@@ -148,18 +121,6 @@
 </head>
 <body>
 <div class="post">
-
-  <!-- BACKGROUND IMAGES — change class to grid-1/2/3/4/6, remove extra <img> tags -->
-  <div class="bg-collage grid-6">
-    <img src="IMG_1.jpg" alt="">
-    <img src="IMG_2.jpg" alt="">
-    <img src="IMG_3.jpg" alt="">
-    <img src="IMG_4.jpg" alt="">
-    <img src="IMG_5.jpg" alt="">
-    <img src="IMG_6.jpg" alt="">
-  </div>
-
-  <div class="overlay"></div>
 
   <div class="content">
 

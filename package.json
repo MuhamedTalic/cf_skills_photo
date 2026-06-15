@@ -10,5 +10,8 @@
   "devDependencies": {
     "jimp": "^1.6.1",
     "puppeteer": "^25.1.0"
+  },
+  "dependencies": {
+    "@imgly/background-removal-node": "^1.4.5"
   }
 }
